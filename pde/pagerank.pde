@@ -1,3 +1,13 @@
+int NODE_SIZE = 30;
+float LAMBDA = 0.8;
+
+int last_millis = 0;
+int sel_node = -1;
+
+int DRAW_MODE = 0;
+int RANK_MODE = 1;
+int mode = DRAW_MODE;
+
 class Node{
   private float r;
   private float x;
@@ -96,15 +106,7 @@ class Graph{
   }
 }
 
-float LAMBDA = 0.8;
-
-int last_millis = 0;
-int sel_node = -1;
 Graph G;
-
-int DRAW_MODE = 0;
-int RANK_MODE = 1;
-int mode = DRAW_MODE;
 
 void setup(){
   size(640, 480);
@@ -146,4 +148,3 @@ void keyPressed(){
   if (keyCode != ENTER) return;
   mode = RANK_MODE;
 }
-
