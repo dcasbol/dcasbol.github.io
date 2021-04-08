@@ -4,21 +4,17 @@ float LAMBDA = 0.8;
 int last_millis = 0;
 int sel_node = -1;
 
-int DRAW_MODE = 0;
-int RANK_MODE = 1;
-int mode = DRAW_MODE;
-
 class Node{
   private float r;
   private float x;
   private float y;
-  private ArrayList<Node> connections;
+  private NodeList connections;
   
   Node(float x, float y){
     this.r = 0;
     this.x = x;
     this.y = y;
-    this.connections = new ArrayList<Node>();
+    this.connections = new NodeList();
   }
   
   public void connect(Node n){
@@ -55,11 +51,36 @@ class Node{
   }
 }
 
+class NodeList{
+  
+  private Node[] nodes;
+  private int num_nodes;
+  
+  NodeList(){
+    this.nodes = new Node[100];
+    this.num_nodes = 0;
+  }
+  
+  public Node get(int i){
+    return this.nodes[i];
+  }
+  
+  public int size(){
+    return this.num_nodes;
+  }
+  
+  public void add(Node n){
+    this.nodes[this.num_nodes] = n;
+    this.num_nodes += 1;
+  }
+  
+}
+
 class Graph{
-  private ArrayList<Node> nodes;
+  private NodeList nodes;
   
   Graph(){
-    this.nodes = new ArrayList<Node>();
+    this.nodes = new NodeList();
   }
   
   public int add_node(float x, float y){
@@ -108,10 +129,14 @@ class Graph{
 
 Graph G;
 
+int DRAW_MODE = 0;
+int RANK_MODE = 1;
+int mode = DRAW_MODE;
+
 void setup(){
   size(640, 480);
   background(255);
-  frameRate(5);
+  frameRate(25);
   G = new Graph();
   last_millis = 0;
 }
