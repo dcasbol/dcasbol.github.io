@@ -142,6 +142,8 @@ void setup(){
 }
 
 void draw(){
+  fill(255);
+  rect(0, 0, width-1, height-1);
   if (mode == RANK_MODE){
     if(millis() - last_millis >= 125){
       last_millis = millis();
@@ -149,7 +151,6 @@ void draw(){
     }
   }
   G.draw();
-  rect(0, 0, width-1, height-1);
 }
 
 void mouseClicked() {
