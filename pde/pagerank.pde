@@ -25,7 +25,7 @@ class Node{
     float r = this.r*255;
     color c = color(r, 255-r, 0);
     fill(c);
-    circle(this.x, this.y, NODE_SIZE);
+    ellipse(this.x, this.y, NODE_SIZE, NODE_SIZE);
   }
   
   public void draw_connections(){
